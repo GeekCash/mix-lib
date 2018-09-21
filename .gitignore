@@ -21,3 +21,17 @@ bitcore.min.js
 bitcore.js.sig
 bitcore.min.js.sig
 tests.js
+a.js
+
+.DS_Store
+node_modules/
+.vscode
+*.log
+*.rar
+*.zip
+.svn/*
+obj/*
+*.bak
+**/env/production.js
+note.txt
+package-lock.json

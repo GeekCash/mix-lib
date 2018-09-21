@@ -1,11 +1,7 @@
-Bitcore Library
+JavaScript Multiple Coins Library
 =======
 
-[![NPM Package](https://img.shields.io/npm/v/bitcore-lib.svg?style=flat-square)](https://www.npmjs.org/package/bitcore-lib)
-[![Build Status](https://img.shields.io/travis/bitpay/bitcore-lib.svg?branch=master&style=flat-square)](https://travis-ci.org/bitpay/bitcore-lib)
-[![Coverage Status](https://img.shields.io/coveralls/bitpay/bitcore-lib.svg?style=flat-square)](https://coveralls.io/r/bitpay/bitcore-lib)
-
-A pure and powerful JavaScript Bitcoin library.
+A pure and powerful JavaScript Multiple Coins library.
 
 ## Principles
 
@@ -14,83 +10,108 @@ Bitcoin is a powerful new peer-to-peer platform for the next generation of finan
 ## Get Started
 
 ```
-npm install bitcore-lib
+npm install mix-lib
 ```
 
+
+```js
+var lib = require('mix-lib');
+var priv = new lib.PrivateKey("GEEK");
+console.log(priv);
+console.log(priv.toWIF());
+console.log(priv.toAddress());
+// <PrivateKey: 8f446ab8fa9db83b367bc4d160b7a6f0fc2fa6f390d076c2616ae7dae2ed49ca, network: GeekCash>
+// XG68DmUydnkdaj9VoXzD6mzGzc2ABz2jEFcUPAYWnBew3eJtYvWk
+// <Address: GPJs2uSCFDjDD9GqS5PcGcixBUs6jB8qL8, type: pubkeyhash, network: GeekCash>
 ```
-bower install bitcore-lib
+
+```js
+var lib = require('mix-lib');
+var priv = new lib.PrivateKey("DASH");
+console.log(priv);
+console.log(priv.toWIF());
+console.log(priv.toAddress());
+// <PrivateKey: 58af0f84ecc68038f9d4f8ec5658c5bf4bea57fedaaa1ebe6e992ca32b101417, network: Dash>
+// XEG2F8raABRoeze7xV4exbg6ji1YYR34qqWQGJ3CZuhdGcZvqGDx
+// <Address: XkV5By8ADmr2jzm6bYjkQnUFHqeu9wk1bP, type: pubkeyhash, network: Dash>
 ```
 
-## Documentation
+```js
+var lib = require('mix-lib');
+var priv = new lib.PrivateKey("BTC");
+console.log(priv);
+console.log(priv.toWIF());
+console.log(priv.toAddress());
+// <PrivateKey: 74b35dce79cb9154858615e8cb8b2889f826ec557bb0bcf95d40881d367779af, network: Bitcoin>
+// L18ZXoA7z6xJBmE9mvctDzwyg2skLLHhYWmupXdnkHQ7JgtL9kXf
+// <Address: 1B7zH2tuXAwqFj9AypBqjMqJiiNKY67os4, type: pubkeyhash, network: Bitcoin>
+```
 
-The complete docs are hosted here: [bitcore documentation](http://bitcore.io/guide/). There's also a [bitcore API reference](http://bitcore.io/api/) available generated from the JSDocs of the project, where you'll find low-level details on each bitcore utility.
+```js
+var lib = require('mix-lib');
+var transaction = new lib.Transaction()
+    .from(utxos)          // Feed information about what unspent outputs one can use
+    .to(address, amount)  // Add an output with the given amount of satoshis
+    .change(address)      // Sets up a change address where the rest of the funds will go
+    .sign(privkeySet)     // Signs all the inputs it can
+```
 
-- [Read the Developer Guide](http://bitcore.io/guide/)
-- [Read the API Reference](http://bitcore.io/api/)
+### Import an address via WIF
 
-To get community assistance and ask for help with implementation questions, please use our [community forums](https://forum.bitcore.io/).
+```js
+var lib = require('mix-lib');
+var wif = 'XG68DmUydnkdaj9VoXzD6mzGzc2ABz2jEFcUPAYWnBew3eJtYvWk';
+var address = new lib.PrivateKey(wif).toAddress();
+//<Address: GPJs2uSCFDjDD9GqS5PcGcixBUs6jB8qL8, type: pubkeyhash, network: GeekCash>
+```
+
+### Coins
+```
+GeekCash [GEEK]
+Dash [DASH]
+Bitcoin [BTC]
+PIVX [PIVX]
+ColossusXT [COLX]
+Aegeus [AEG]
+MetaCash [META]
+LightPayCoin [LPC]
+Northern [NORT]
+DeepOnion [ONION]
+DigiByte [DGB]
+Zcash [ZEC]
+Stakenet [XSN]
+MMOCoin [MMO]
+Stakecube [SCC]
+BitcoinCash [BCH]
+Alqo [ALQ]
+BlockNet [BLOCK]
+Trittium [TRTT]
+```
+
+To get community assistance and ask for help with implementation questions, please join: https://discord.gg/Yq9tFKK
 
 ## Examples
 
-* [Generate a random address](https://github.com/bitpay/bitcore-lib/blob/master/docs/examples.md#generate-a-random-address)
-* [Generate a address from a SHA256 hash](https://github.com/bitpay/bitcore-lib/blob/master/docs/examples.md#generate-a-address-from-a-sha256-hash)
-* [Import an address via WIF](https://github.com/bitpay/bitcore-lib/blob/master/docs/examples.md#import-an-address-via-wif)
-* [Create a Transaction](https://github.com/bitpay/bitcore-lib/blob/master/docs/examples.md#create-a-transaction)
-* [Sign a Bitcoin message](https://github.com/bitpay/bitcore-lib/blob/master/docs/examples.md#sign-a-bitcoin-message)
-* [Verify a Bitcoin message](https://github.com/bitpay/bitcore-lib/blob/master/docs/examples.md#verify-a-bitcoin-message)
-* [Create an OP RETURN transaction](https://github.com/bitpay/bitcore-lib/blob/master/docs/examples.md#create-an-op-return-transaction)
-* [Create a 2-of-3 multisig P2SH address](https://github.com/bitpay/bitcore-lib/blob/master/docs/examples.md#create-a-2-of-3-multisig-p2sh-address)
-* [Spend from a 2-of-2 multisig P2SH address](https://github.com/bitpay/bitcore-lib/blob/master/docs/examples.md#spend-from-a-2-of-2-multisig-p2sh-address)
+* [Generate a random address](docs/examples.md#generate-a-random-address)
+* [Generate a address from a SHA256 hash](docs/examples.md#generate-a-address-from-a-sha256-hash)
+* [Import an address via WIF](docs/examples.md#import-an-address-via-wif)
+* [Create a Transaction](docs/examples.md#create-a-transaction)
+* [Sign a Bitcoin message](hdocs/examples.md#sign-a-bitcoin-message)
+* [Verify a Bitcoin message](docs/examples.md#verify-a-bitcoin-message)
+* [Create an OP RETURN transaction](docs/examples.md#create-an-op-return-transaction)
+* [Create a 2-of-3 multisig P2SH address](docs/examples.md#create-a-2-of-3-multisig-p2sh-address)
+* [Spend from a 2-of-2 multisig P2SH address](docs/examples.md#spend-from-a-2-of-2-multisig-p2sh-address)
 
 
 ## Security
 
-We're using Bitcore in production, as are [many others](http://bitcore.io#projects), but please use common sense when doing anything related to finances! We take no responsibility for your implementation decisions.
+We're using Bitcore in production, as are [many others](https://geekcash.org), but please use common sense when doing anything related to finances! We take no responsibility for your implementation decisions.
 
-If you find a security issue, please email security@bitpay.com.
+If you find a security issue, please email hello@geekcash.org
 
-## Contributing
-
-Please send pull requests for bug fixes, code optimization, and ideas for improvement. For more information on how to contribute, please refer to our [CONTRIBUTING](https://github.com/bitpay/bitcore-lib/blob/master/CONTRIBUTING.md) file.
-
-## Building the Browser Bundle
-
-To build a bitcore-lib full bundle for the browser:
-
-```sh
-gulp browser
-```
-
-This will generate files named `bitcore-lib.js` and `bitcore-lib.min.js`.
-
-You can also use our pre-generated files, provided for each release along with a PGP signature by one of the project's maintainers. To get them, checkout a release commit (for example, https://github.com/bitpay/bitcore-lib/commit/e33b6e3ba6a1e5830a079e02d949fce69ea33546 for v0.12.6).
-
-To verify signatures, use the following PGP keys:
-- @braydonf: https://pgp.mit.edu/pks/lookup?op=get&search=0x9BBF07CAC07A276D `D909 EFE6 70B5 F6CC 89A3 607A 9BBF 07CA C07A 276D`
-- @gabegattis: https://pgp.mit.edu/pks/lookup?op=get&search=0x441430987182732C `F3EA 8E28 29B4 EC93 88CB  B0AA 4414 3098 7182 732C`
-- @kleetus: https://pgp.mit.edu/pks/lookup?op=get&search=0x33195D27EF6BDB7F `F8B0 891C C459 C197 65C2 5043 3319 5D27 EF6B DB7F`
-- @matiu: https://pgp.mit.edu/pks/lookup?op=get&search=0x9EDE6DE4DE531FAC `25CE ED88 A1B1 0CD1 12CD  4121 9EDE 6DE4 DE53 1FAC`
-
-
-## Development & Tests
-
-```sh
-git clone https://github.com/bitpay/bitcore-lib
-cd bitcore-lib
-npm install
-```
-
-Run all the tests:
-
-```sh
-gulp test
-```
-
-You can also run just the Node.js tests with `gulp test:node`, just the browser tests with `gulp test:browser`
-or create a test coverage report (you can open `coverage/lcov-report/index.html` to visualize it) with `gulp coverage`.
 
 ## License
 
-Code released under [the MIT license](https://github.com/bitpay/bitcore-lib/blob/master/LICENSE).
+Code released under [the MIT license](LICENSE).
 
-Copyright 2013-2017 BitPay, Inc. Bitcore is a trademark maintained by BitPay, Inc.
+Copyright (c) 2018 GeekCash Team (https://geekcash.org)
