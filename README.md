@@ -90,6 +90,7 @@ Transcendence [TELOS]
 QubeNet [QUB]
 SolarCoin [SLR]
 Bettex [BTXC]
+LogisCoin [LGS]
 ```
 
 To get community assistance and ask for help with implementation questions, please join: https://discord.gg/Yq9tFKK

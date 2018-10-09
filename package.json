@@ -1,6 +1,6 @@
 {
-  "name": "@geekcash/mix-lib",
-  "version": "1.0.7",
+  "name": "mix-lib",
+  "version": "1.0.8",
   "description": "A pure and powerful JavaScript Multiple Coins library.",
   "author": "GeekCash Team <hello@geekcash.org>",
   "main": "./dist/index.js",
@@ -49,7 +49,8 @@
     "Transcendence",
     "QubeNet",
     "SolarCoin",
-    "Bettex"
+    "Bettex",
+    "LogisCoin"
   ],
   "repository": {
     "type": "git",
