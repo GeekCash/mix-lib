@@ -88,6 +88,8 @@ BlockNet [BLOCK]
 CommandCoin [CMD]
 Transcendence [TELOS]
 QubeNet [QUB]
+SolarCoin [SLR]
+
 ```
 
 To get community assistance and ask for help with implementation questions, please join: https://discord.gg/Yq9tFKK
