@@ -91,6 +91,7 @@ QubeNet [QUB]
 SolarCoin [SLR]
 Bettex [BTXC]
 LogisCoin [LGS]
+CatoCoin [CAT]
 ```
 
 To get community assistance and ask for help with implementation questions, please join: https://discord.gg/Yq9tFKK
