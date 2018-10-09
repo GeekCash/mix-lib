@@ -85,7 +85,9 @@ Stakecube [SCC]
 BitcoinCash [BCH]
 Alqo [ALQ]
 BlockNet [BLOCK]
-Trittium [TRTT]
+CommandCoin [CMD]
+Transcendence [TELOS]
+QubeNet [QUB]
 ```
 
 To get community assistance and ask for help with implementation questions, please join: https://discord.gg/Yq9tFKK

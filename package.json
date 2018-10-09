@@ -1,6 +1,6 @@
 {
-  "name": "mix-lib",
-  "version": "1.0.4",
+  "name": "@geekcash/mix-lib",
+  "version": "1.0.5",
   "description": "A pure and powerful JavaScript Multiple Coins library.",
   "author": "GeekCash Team <hello@geekcash.org>",
   "main": "./dist/index.js",
