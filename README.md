@@ -94,6 +94,7 @@ LogisCoin [LGS]
 CatoCoin [CAT]
 Galilel [GALI]
 French Digital Reserve [FDR]
+GlobyCoin [GLB]
 ```
 
 To get community assistance and ask for help with implementation questions, please join: https://discord.gg/Yq9tFKK
